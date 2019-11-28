@@ -1,1 +1,1 @@
-web: composer start
+web: php -S 0.0.0.0:$PORT

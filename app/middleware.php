@@ -12,6 +12,7 @@ return function (App $app) {
   $app->add(new Tuupola\Middleware\JwtAuthentication([
       "path" => "/.+",
       "ignore" => ["/token"],
+      "secure" => false,
       "secret" =>  $_ENV["JWT_SECRET"] ?? 'secret'
   ]));
 };

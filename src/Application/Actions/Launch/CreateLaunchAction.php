@@ -13,6 +13,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Post(
 *     path="/launch",
+*     security={{"bearerAuth":{}}},
 *     summary="Insert an launch",
 *     description="Returns the inserted launch",
 *     tags={"launch"},
@@ -45,6 +46,10 @@ use OpenApi\Annotations as OA;
 *         response=200,
 *         description="successful operation",
 *         @OA\JsonContent(ref="#/components/schemas/Launch")
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 *     @OA\Response(response="405",description="Invalid input")
 * )

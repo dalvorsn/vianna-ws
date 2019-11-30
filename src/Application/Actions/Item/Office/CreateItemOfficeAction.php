@@ -13,6 +13,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Post(
 *     path="/items-office",
+*     security={{"bearerAuth":{}}},
 *     summary="Insert an office item",
 *     description="Returns the inserted office item",
 *     tags={"items-office"},
@@ -45,6 +46,10 @@ use OpenApi\Annotations as OA;
 *         response=200,
 *         description="successful operation",
 *         @OA\JsonContent(ref="#/components/schemas/ItemOffice")
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 *     @OA\Response(response="405",description="Invalid input")
 * )

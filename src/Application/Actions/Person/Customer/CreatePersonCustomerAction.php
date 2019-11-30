@@ -13,6 +13,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Post(
 *     path="/people-customer",
+*     security={{"bearerAuth":{}}},
 *     summary="Insert an customer",
 *     description="Returns the inserted customer",
 *     tags={"people-customer"},
@@ -40,6 +41,10 @@ use OpenApi\Annotations as OA;
 *         response=200,
 *         description="successful operation",
 *         @OA\JsonContent(ref="#/components/schemas/PersonCustomer")
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 *     @OA\Response(response="405",description="Invalid input")
 * )

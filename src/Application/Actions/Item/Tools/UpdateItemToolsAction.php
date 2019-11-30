@@ -13,6 +13,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Put(
 *     path="/items-tools",
+*     security={{"bearerAuth":{}}},
 *     summary="Update an tool item",
 *     description="Returns the update tool item",
 *     tags={"items-tools"},
@@ -50,6 +51,10 @@ use OpenApi\Annotations as OA;
 *         response=200,
 *         description="successful operation",
 *         @OA\JsonContent(ref="#/components/schemas/ItemTool")
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 *     @OA\Response(response="405",description="Invalid input")
 *           

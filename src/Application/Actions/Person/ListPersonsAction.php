@@ -11,6 +11,7 @@ use Psr\Log\LoggerInterface;
 /**
 * @OA\Get(
 *     path="/people",
+*     security={{"bearerAuth":{}}},
 *     summary="Return all person",
 *     tags={"people"},
 *     @OA\Response(
@@ -20,6 +21,10 @@ use Psr\Log\LoggerInterface;
 *            type="array",
 *            @OA\Items(ref="#/components/schemas/Person")
 *         )
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 * )
 */

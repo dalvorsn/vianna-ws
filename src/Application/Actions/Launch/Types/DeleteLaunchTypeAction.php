@@ -12,6 +12,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Delete(
 *     path="/launch-type/{codigo}",
+*     security={{"bearerAuth":{}}},
 *     summary="Delete launch type by codigo",
 *     description="",
 *     tags={"launch-type"},
@@ -28,6 +29,10 @@ use OpenApi\Annotations as OA;
 *     @OA\Response(
 *         response=200,
 *         description="successful operation"
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 *     @OA\Response(
 *         response="404",

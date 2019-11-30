@@ -11,6 +11,7 @@ use Psr\Log\LoggerInterface;
 /**
 * @OA\Get(
 *     path="/os-tools",
+*     security={{"bearerAuth":{}}},
 *     summary="Return all tools service order",
 *     tags={"os-tools"},
 *     @OA\Response(
@@ -20,6 +21,10 @@ use Psr\Log\LoggerInterface;
 *            type="array",
 *            @OA\Items(ref="#/components/schemas/ServiceOrderTools")
 *         )
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 * )
 */

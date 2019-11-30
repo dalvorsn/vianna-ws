@@ -12,6 +12,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Get(
 *     path="/items-tools/{codigo}",
+*     security={{"bearerAuth":{}}},
 *     summary="Find tool item by codigo",
 *     description="Returns a single tool item",
 *     tags={"items-tools"},
@@ -29,6 +30,10 @@ use OpenApi\Annotations as OA;
 *         response=200,
 *         description="successful operation",
 *         @OA\JsonContent(ref="#/components/schemas/ItemTool")
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 *     @OA\Response(
 *         response="404",

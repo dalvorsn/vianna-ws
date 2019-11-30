@@ -11,6 +11,7 @@ use Psr\Log\LoggerInterface;
 /**
 * @OA\Get(
 *     path="/launch-income",
+*     security={{"bearerAuth":{}}},
 *     summary="Return all launch income",
 *     tags={"launch-income"},
 *     @OA\Response(
@@ -20,6 +21,10 @@ use Psr\Log\LoggerInterface;
 *            type="array",
 *            @OA\Items(ref="#/components/schemas/LaunchIncome")
 *         )
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 * )
 */

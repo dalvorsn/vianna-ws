@@ -12,6 +12,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Delete(
 *     path="/items-furniture/{codigo}",
+*     security={{"bearerAuth":{}}},
 *     summary="Delete item by codigo",
 *     description="Returns the affected rows",
 *     tags={"items-furniture"},
@@ -32,6 +33,10 @@ use OpenApi\Annotations as OA;
 *     @OA\Response(
 *         response="404",
 *         description="Furniture not found"
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 * )
 */

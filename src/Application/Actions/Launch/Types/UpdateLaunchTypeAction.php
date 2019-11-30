@@ -13,6 +13,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Put(
 *     path="/launch-type",
+*     security={{"bearerAuth":{}}},
 *     summary="Update an launch type",
 *     description="Returns the update launch type",
 *     tags={"launch-type"},
@@ -35,6 +36,10 @@ use OpenApi\Annotations as OA;
 *         response=200,
 *         description="successful operation",
 *         @OA\JsonContent(ref="#/components/schemas/LaunchTypes")
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 *     @OA\Response(response="405",description="Invalid input")
 *           

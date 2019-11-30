@@ -13,6 +13,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Put(
 *     path="/people-provider",
+*     security={{"bearerAuth":{}}},
 *     summary="Update an provider",
 *     description="Returns the update provider",
 *     tags={"people-provider"},
@@ -40,6 +41,10 @@ use OpenApi\Annotations as OA;
 *         response=200,
 *         description="successful operation",
 *         @OA\JsonContent(ref="#/components/schemas/PersonProvider")
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 *     @OA\Response(response="405",description="Invalid input")
 *           

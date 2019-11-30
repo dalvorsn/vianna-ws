@@ -12,6 +12,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Delete(
 *     path="/items-tools/{codigo}",
+*     security={{"bearerAuth":{}}},
 *     summary="Delete item by codigo",
 *     description="",
 *     tags={"items-tools"},
@@ -28,6 +29,10 @@ use OpenApi\Annotations as OA;
 *     @OA\Response(
 *         response=200,
 *         description="successful operation"
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 *     @OA\Response(
 *         response="404",

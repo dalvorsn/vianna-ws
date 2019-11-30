@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+use App\Application\Actions\Token;
+
 use App\Application\Actions\Item\ViewItemAction;
 use App\Application\Actions\Item\ListItemsAction;
 use App\Application\Actions\Item\CreateItemAction;
@@ -99,6 +101,8 @@ use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 return function (App $app) {
 
   $app->redirect('/', '/doc', 301);
+
+  $app->post('/token', Token::class);
   
   $app->group('/items', function (Group $group) use ($app) {
     $group->get('', ListItemsAction::class);

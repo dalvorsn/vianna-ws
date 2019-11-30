@@ -12,6 +12,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Get(
 *     path="/people-provider/{codigo}",
+*     security={{"bearerAuth":{}}},
 *     summary="Find provider by codigo",
 *     description="Returns a single office item",
 *     tags={"people-provider"},
@@ -29,6 +30,10 @@ use OpenApi\Annotations as OA;
 *         response=200,
 *         description="successful operation",
 *         @OA\JsonContent(ref="#/components/schemas/PersonProvider")
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 *     @OA\Response(
 *         response="404",

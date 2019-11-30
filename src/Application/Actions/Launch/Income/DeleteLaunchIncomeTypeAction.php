@@ -12,6 +12,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Delete(
 *     path="/launch-income/{codigo}",
+*     security={{"bearerAuth":{}}},
 *     summary="Delete launch income by codigo",
 *     description="",
 *     tags={"launch-income"},
@@ -28,6 +29,10 @@ use OpenApi\Annotations as OA;
 *     @OA\Response(
 *         response=200,
 *         description="successful operation"
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 *     @OA\Response(
 *         response="404",

@@ -12,6 +12,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Get(
 *     path="/launch-income/{codigo}",
+*     security={{"bearerAuth":{}}},
 *     summary="Find launch income by codigo",
 *     description="Returns a single office item",
 *     tags={"launch-income"},
@@ -29,6 +30,10 @@ use OpenApi\Annotations as OA;
 *         response=200,
 *         description="successful operation",
 *         @OA\JsonContent(ref="#/components/schemas/LaunchIncome")
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 *     @OA\Response(
 *         response="404",

@@ -12,6 +12,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Get(
 *     path="/items-furniture/{codigo}",
+*     security={{"bearerAuth":{}}},
 *     summary="Find item by codigo",
 *     description="Returns a single item",
 *     tags={"items-furniture"},
@@ -33,6 +34,10 @@ use OpenApi\Annotations as OA;
 *     @OA\Response(
 *         response="404",
 *         description="Furniture not found"
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 * )
 */

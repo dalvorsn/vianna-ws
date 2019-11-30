@@ -13,6 +13,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Post(
 *     path="/os-employee",
+*     security={{"bearerAuth":{}}},
 *     summary="Insert an employee service order",
 *     description="Returns the inserted employee service order",
 *     tags={"os-employee"},
@@ -40,6 +41,10 @@ use OpenApi\Annotations as OA;
 *         response=200,
 *         description="successful operation",
 *         @OA\JsonContent(ref="#/components/schemas/ServiceOrderEmployee")
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 *     @OA\Response(response="405",description="Invalid input")
 * )

@@ -12,6 +12,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Delete(
 *     path="/people-employee/{codigo}",
+*     security={{"bearerAuth":{}}},
 *     summary="Delete employee by codigo",
 *     description="",
 *     tags={"people-employee"},
@@ -28,6 +29,10 @@ use OpenApi\Annotations as OA;
 *     @OA\Response(
 *         response=200,
 *         description="successful operation"
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 *     @OA\Response(
 *         response="404",

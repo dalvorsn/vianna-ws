@@ -13,6 +13,7 @@ use OpenApi\Annotations as OA;
 /**
 * @OA\Put(
 *     path="/launch-income",
+*     security={{"bearerAuth":{}}},
 *     summary="Update an launch income",
 *     description="Returns the update launch income",
 *     tags={"launch-income"},
@@ -55,6 +56,10 @@ use OpenApi\Annotations as OA;
 *         response=200,
 *         description="successful operation",
 *         @OA\JsonContent(ref="#/components/schemas/LaunchIncome")
+*     ),
+*     @OA\Response(
+*         response=401,
+*         description="Error: Unauthorized"
 *     ),
 *     @OA\Response(response="405",description="Invalid input")
 *           

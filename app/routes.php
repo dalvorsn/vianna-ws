@@ -32,6 +32,7 @@ use App\Application\Actions\Person\DeletePersonAction;
 use App\Application\Actions\Person\ListPersonsAction;
 use App\Application\Actions\Person\UpdatePersonAction;
 use App\Application\Actions\Person\ViewPersonAction;
+use App\Application\Actions\Person\GetPersonTypeAction;
 
 use App\Application\Actions\Person\Employee\CreatePersonEmployeeAction;
 use App\Application\Actions\Person\Employee\DeletePersonEmployeeAction;
@@ -44,6 +45,7 @@ use App\Application\Actions\Person\Customer\DeletePersonCustomerAction;
 use App\Application\Actions\Person\Customer\ListPersonsCustomerAction;
 use App\Application\Actions\Person\Customer\UpdatePersonCustomerAction;
 use App\Application\Actions\Person\Customer\ViewPersonCustomerAction;
+use App\Application\Actions\Person\Customer\FindPersonCustomerAction;
 
 use App\Application\Actions\Person\Provider\CreatePersonProviderAction;
 use App\Application\Actions\Person\Provider\DeletePersonProviderAction;
@@ -142,6 +144,8 @@ return function (App $app) {
     $group->get('', ListPersonsAction::class);
     $group->put('', UpdatePersonAction::class);
     $group->get('/{codigo}', ViewPersonAction::class);
+
+    $group->get('/{codigo}/type', GetPersonTypeAction::class);
   });
 
   $app->group('/people-employee', function (Group $group) use ($app) {
@@ -158,6 +162,8 @@ return function (App $app) {
     $group->get('', ListPersonsCustomerAction::class);
     $group->put('', UpdatePersonCustomerAction::class);
     $group->get('/{codigo}', ViewPersonCustomerAction::class);
+
+    $group->get('/find-by-person/{codigo_pessoa}', FindPersonCustomerAction::class);
   });
 
   $app->group('/people-provider', function (Group $group) use ($app) {

@@ -56,7 +56,7 @@ class CreatePersonCustomerAction extends Action
     {
       $data = $this->getFormData();
 
-      $query = "INSERT INTO pessoas_funcionarios 
+      $query = "INSERT INTO pessoas_clientes 
         ( codigo_tipo, codigo_pessoa ) 
       VALUES 
         ( :codigo_tipo, :codigo_pessoa )";

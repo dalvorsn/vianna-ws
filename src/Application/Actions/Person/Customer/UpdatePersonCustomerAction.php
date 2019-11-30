@@ -59,12 +59,12 @@ class UpdatePersonCustomerAction extends Action
     {
       $data = $this->getFormData();
 
-      $query = "SELECT * FROM pessoas_funcionarios WHERE codigo = :codigo";
+      $query = "SELECT * FROM pessoas_clientes WHERE codigo = :codigo";
       $item = $this->fetchResult($query, [
         "codigo" => $data->codigo
       ], "PersonCustomer not found.");
 
-      $query = "UPDATE pessoas_funcionarios SET
+      $query = "UPDATE pessoas_clientes SET
         codigo_tipo = :codigo_tipo,
         codigo_pessoa = :codigo_pessoa
       WHERE

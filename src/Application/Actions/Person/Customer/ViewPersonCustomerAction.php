@@ -48,7 +48,7 @@ class ViewPersonCustomerAction extends Action
     {
         $codigo = $this->resolveArg("codigo");
 
-        $query = "SELECT * FROM pessoas_funcionarios WHERE codigo = :codigo";
+        $query = "SELECT * FROM pessoas_clientes WHERE codigo = :codigo";
         $item = $this->fetchResult($query, [
             "codigo" => $codigo
         ], "PersonCustomer not found.");

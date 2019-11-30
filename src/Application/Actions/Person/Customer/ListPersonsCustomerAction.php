@@ -34,7 +34,7 @@ class ListPersonsCustomerAction extends Action
 {
     protected function action(): Response
     {
-        $query = "SELECT * FROM pessoas_funcionarios";
+        $query = "SELECT * FROM pessoas_clientes";
         $items = $this->fetchResults($query);
 
         $ret = [];

@@ -10,16 +10,16 @@ use Psr\Log\LoggerInterface;
 use OpenApi\Annotations as OA;
 
 /**
-* @OA\Delete(
-*     path="/people-customer/{codigo}",
+* @OA\Get(
+*     path="/people-customer/{codigo_pessoa}/find-by-person",
 *     security={{"bearerAuth":{}}},
-*     summary="Delete customer by codigo",
-*     description="",
+*     summary="Find customer by codigo_pessoa",
+*     description="Returns a single office item",
 *     tags={"people-customer"},
 *     @OA\Parameter(
 *         description="Identificator of customer to return",
 *         in="path",
-*         name="codigo",
+*         name="codigo_pessoa",
 *         required=true,
 *         @OA\Schema(
 *           type="integer",
@@ -28,7 +28,8 @@ use OpenApi\Annotations as OA;
 *     ),
 *     @OA\Response(
 *         response=200,
-*         description="successful operation"
+*         description="successful operation",
+*         @OA\JsonContent(ref="#/components/schemas/PersonCustomer")
 *     ),
 *     @OA\Response(
 *         response=401,
@@ -41,20 +42,17 @@ use OpenApi\Annotations as OA;
 * )
 */
 
-class DeletePersonCustomerAction extends Action
+class FindPersonCustomerAction extends Action
 {
-  protected function action(): Response
-  {
-    $codigo = $this->resolveArg("codigo");
+    protected function action(): Response
+    {
+        $codigo_pessoa = $this->resolveArg("codigo_pessoa");
 
-    $query = "SELECT * FROM pessoas_clientes WHERE codigo = :codigo";
-    $item = $this->fetchResult($query, [
-      "codigo" => $codigo
-    ], "PersonCustomer not found.");
+        $query = "SELECT * FROM pessoas_clientes WHERE codigo_pessoa = :codigo_pessoa";
+        $item = $this->fetchResult($query, [
+            "codigo_pessoa" => $codigo_pessoa
+        ], "PersonCustomer not found.");
 
-    $query = "DELETE FROM pessoas_clientes WHERE codigo = :codigo";
-    $rows = $this->delete($query, [ "codigo" => $codigo ]);
-
-    return $this->respondWithData([]);
-  }
+        return $this->respondWithData($item);
+    }
 }

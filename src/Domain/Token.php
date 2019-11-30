@@ -15,16 +15,22 @@ class Token implements JsonSerializable
      * @var string
      */
     public $token;
+
+    /**
+     * @OA\Property()
+     * @var int
+     */
+    public $codigo_pessoa;
     
-    public function __construct(?string $token)
+    public function __construct(?string $token, ?int $codigo_pessoa)
     {
         $this->token = $token;
-
+        $this->codigo_pessoa = $codigo_pessoa;
     }
 
     public static function convertClass(object $object)
     {   
-        $new = new self(null);
+        $new = new self(null, null);
         $attributes = get_class_vars(get_class($new));
         foreach ($attributes as $key => $value)
         {   
@@ -42,7 +48,8 @@ class Token implements JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'token' => $this->token
+            'token' => $this->token,
+            'codigo_pessoa' => $this->codigo_pessoa,
         ];
     }
 }

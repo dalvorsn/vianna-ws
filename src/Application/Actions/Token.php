@@ -84,7 +84,7 @@ class Token extends Action
 
       $token = JWT::encode($tokenPayload, $_ENV["JWT_SECRET"] ?? 'secret');
       
-      return new \App\Domain\Token($token);
+      return new \App\Domain\Token($token, (int)$person->codigo);
     }
 
 }

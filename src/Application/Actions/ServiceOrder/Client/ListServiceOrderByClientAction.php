@@ -10,10 +10,20 @@ use Psr\Log\LoggerInterface;
 
 /**
 * @OA\Get(
-*     path="/os-client",
+*     path="/os-client/{codigo_cliente}/list",
 *     security={{"bearerAuth":{}}},
-*     summary="Return all client service order",
+*     summary="Return all client service orders filtered by codigo_cliente",
 *     tags={"os-client"},
+*     @OA\Parameter(
+*         description="Identificator of client service order to return",
+*         in="path",
+*         name="codigo_cliente",
+*         required=true,
+*         @OA\Schema(
+*           type="integer",
+*           format="int64"
+*         )
+*     ),
 *     @OA\Response(
 *         response=200,
 *         description="successful operation",
@@ -30,12 +40,14 @@ use Psr\Log\LoggerInterface;
 */
 
 
-class ListServiceOrderClientsAction extends Action
+class ListServiceOrderByClientAction extends Action
 {
     protected function action(): Response
     {
-        $query = "SELECT * FROM atendimentos_cliente";
-        $items = $this->fetchResults($query);
+        $codigo = $this->resolveArg("codigo_cliente");
+
+        $query = "SELECT * FROM atendimentos_cliente WHERE codigo_cliente = :codigo_cliente";
+        $items = $this->fetchResults($query, [ "codigo_cliente" => $codigo ]);
         $ret = [];
         foreach( $items as $item ) {
             array_push($ret, [

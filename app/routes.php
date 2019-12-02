@@ -76,6 +76,7 @@ use App\Application\Actions\ServiceOrder\Client\DeleteServiceOrderClientAction;
 use App\Application\Actions\ServiceOrder\Client\ListServiceOrderClientsAction;
 use App\Application\Actions\ServiceOrder\Client\UpdateServiceOrderClientAction;
 use App\Application\Actions\ServiceOrder\Client\ViewServiceOrderClientAction;
+use App\Application\Actions\ServiceOrder\Client\ListServiceOrderByClientAction;
 
 use App\Application\Actions\Launch\CreateLaunchAction;
 use App\Application\Actions\Launch\DeleteLaunchAction;
@@ -204,6 +205,7 @@ return function (App $app) {
     $group->get('', ListServiceOrderClientsAction::class);
     $group->put('', UpdateServiceOrderClientAction::class);
     $group->get('/{codigo}', ViewServiceOrderClientAction::class);
+    $group->get('/{codigo_cliente}/list', ListServiceOrderByClientAction::class);
   });
 
   $app->group('/launch', function (Group $group) use ($app) {

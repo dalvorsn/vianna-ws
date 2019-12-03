@@ -11,7 +11,7 @@ use OpenApi\Annotations as OA;
 
 /**
 * @OA\Get(
-*     path="/people-customer/{codigo_pessoa}/find-by-person",
+*     path="/people-customer/find-by-person/{codigo_pessoa}",
 *     security={{"bearerAuth":{}}},
 *     summary="Find customer by codigo_pessoa",
 *     description="Returns a single office item",

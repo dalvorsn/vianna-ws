@@ -53,6 +53,7 @@ use App\Application\Actions\Person\Provider\DeletePersonProviderAction;
 use App\Application\Actions\Person\Provider\ListPersonsProviderAction;
 use App\Application\Actions\Person\Provider\UpdatePersonProviderAction;
 use App\Application\Actions\Person\Provider\ViewPersonProviderAction;
+use App\Application\Actions\Person\Provider\FindPersonProviderAction;
 
 use App\Application\Actions\ServiceOrder\CreateServiceOrderAction;
 use App\Application\Actions\ServiceOrder\DeleteServiceOrderAction;
@@ -176,6 +177,8 @@ return function (App $app) {
     $group->get('', ListPersonsProviderAction::class);
     $group->put('', UpdatePersonProviderAction::class);
     $group->get('/{codigo}', ViewPersonProviderAction::class);
+    
+    $group->get('/find-by-person/{codigo_pessoa}', FindPersonProviderAction::class);
   });
 
   $app->group('/os', function (Group $group) use ($app) {

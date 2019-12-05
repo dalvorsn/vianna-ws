@@ -8,6 +8,7 @@ use App\Application\Actions\Item\ListItemsAction;
 use App\Application\Actions\Item\CreateItemAction;
 use App\Application\Actions\Item\UpdateItemAction;
 use App\Application\Actions\Item\DeleteItemAction;
+use App\Application\Actions\Item\ListItemsByProviderAction;
 
 use App\Application\Actions\Item\Tools\ViewItemToolsAction;
 use App\Application\Actions\Item\Tools\ListItemsToolsAction;
@@ -113,6 +114,8 @@ return function (App $app) {
     $group->post('', CreateItemAction::class);
     $group->put('', UpdateItemAction::class);
     $group->delete('/{codigo}', DeleteItemAction::class);
+
+    $group->get('/{codigo_fornecedor}/provider', ListItemsByProviderAction::class);
   });
 
   $app->group('/items-tools', function (Group $group) use ($app) {
